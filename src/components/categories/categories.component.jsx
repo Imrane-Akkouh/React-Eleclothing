@@ -48,8 +48,8 @@ class Categories extends Component {
     render(){
         return(
             <div className="categories" >
-                {this.state.sections.map(({title, imageUrl, id, size}) => (
-                    <CategoryItem key={id} size={size} imageUrl={imageUrl} title={title}></CategoryItem>
+                {this.state.sections.map(({id, ...otherSectionProps}) => (
+                    <CategoryItem key={id} {...otherSectionProps}></CategoryItem>
                 ))}
             </div>
         )
