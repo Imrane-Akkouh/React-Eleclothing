@@ -13,14 +13,14 @@ class Shop extends Component {
         };
     };
     render() {
-        const {collections} = this.state;
+        const { collections } = this.state;
         return (
             <div className="shop">
                 {
                     collections.map(item => (
-                <PreviewCollection key="item.id" {...item}></PreviewCollection>
-                ))
-            }
+                        <PreviewCollection key={item.id} {...item}></PreviewCollection>
+                    ))
+                }
             </div>
         )
     }
