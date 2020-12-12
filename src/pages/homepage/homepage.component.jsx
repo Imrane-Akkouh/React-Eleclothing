@@ -1,14 +1,14 @@
 import React from 'react';
 
-import './homepage.style.scss';
+import { HomepageContainer } from './homepage.style';
 
 import Categories from '../../components/categories/categories.component';
 
 const HomePage = (props) => {
     return (
-        <div className="homepage">
+        <HomepageContainer>
             <Categories></Categories>
-        </div>
+        </HomepageContainer>
     )
 }
 
