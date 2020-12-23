@@ -44,9 +44,9 @@ export function* isAuthenticated() {
     }
 }
 
-export function* getSnapshotFromUser(userAuth) {
+export function* getSnapshotFromUser(userAuth, otherData) {
     try {
-        const userRef = yield call(createUserProfileDocument, userAuth);
+        const userRef = yield call(createUserProfileDocument, userAuth, otherData);
         const userSnapshot = yield userRef.get();
         yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
     } catch (error) {
@@ -76,15 +76,18 @@ export function* signUp({payload: { displayName, email, password }}) {
     try {
         console.log(email);
         const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-        yield createUserProfileDocument(user, { displayName });
-        yield put(signUpSuccess({ email, password }));
+        yield put(signUpSuccess({ user, otherData: {displayName} }));
     } catch (error) {
         yield put(signUpFailure(error))
     }
 }
 
 export function* onSignUpSuccess() {
-    yield takeLatest(userActionTypes.SIGN_UP_SUCCESS, signInWithEmail);
+    yield takeLatest(userActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
+}
+
+export function* signInAfterSignUp({payload: {user, otherData}}){
+    yield getSnapshotFromUser(user, otherData)
 }
 
 export function* userSagas() {
