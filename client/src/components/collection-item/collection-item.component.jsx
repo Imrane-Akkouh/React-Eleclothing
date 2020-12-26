@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import {CustomButtonContainer, CollectionItemContainer} from './collection-item.style';
 import {addItem} from '../../redux/cart/cart.actions';
 
-import './collection-item.style.scss';
-
 const CollectionItem = ({item, addItem}) => {
     const {name, imageUrl, price} = item;
     return (
