@@ -11,6 +11,14 @@ export const CustomButtonContainer = styled(CustomButton)`
 
 
 export const CollectionItemContainer = styled.div`
+  width: 22vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  align-items: center;
+  position: relative;
+
   .image {
     width: 100%;
     height: 95%;
@@ -34,12 +42,7 @@ export const CollectionItemContainer = styled.div`
       width: 10%;
     }
   }
-  width: 22vw;
-  display: flex;
-  flex-direction: column;
-  height: 350px;
-  align-items: center;
-  position: relative;
+
   &:hover{
     .image{
       opacity: 0.75;

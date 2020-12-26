@@ -10,6 +10,7 @@ import ErrorBoundary from './components/error-boundary/error-boundary.component'
 import { checkUserSession } from './redux/user/user-actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import Spinner from './components/spinner/spinner.component.jsx';
+import ErrorImage from './components/error-image/error-image.component.jsx';
 
 const App = ({ checkUserSession, currentUser }) => {
 
@@ -31,6 +32,7 @@ const App = ({ checkUserSession, currentUser }) => {
           <Suspense fallback={<Spinner></Spinner>}>
             <Route exact path="/" component={HomePage}></Route>
             <Route path="/shop" component={Shop}></Route>
+            <Route exact path="/contact" render={() => (<ErrorImage></ErrorImage>)}></Route>
             <Route exact path="/checkout" component={Checkout}></Route>
             <Route exact path="/authentication" render={() => currentUser ? (<Redirect to="/"></Redirect>) : (<Authentication></Authentication>)}></Route>
           </Suspense>
