@@ -11,7 +11,7 @@ background-position: center;
 background-size: cover;
 overflow: hidden;
 
-${props => { console.log(props.large); return props.large ? 'height:340px;' : 'height: 240px;' }}
+${props => { return props.large ? 'height:340px;' : 'height: 240px;' }}
 
 &:first-child{
     margin-right: 7.5px;
