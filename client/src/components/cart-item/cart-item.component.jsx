@@ -12,4 +12,4 @@ const CartItem = ({ item }) => (
     </div>
 )
 
-export default Reqct.memo(CartItem);
+export default React.memo(CartItem);
