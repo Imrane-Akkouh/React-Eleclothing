@@ -74,7 +74,6 @@ export function* onSignUpStart() {
 
 export function* signUp({payload: { displayName, email, password }}) {
     try {
-        console.log(email);
         const { user } = yield auth.createUserWithEmailAndPassword(email, password);
         yield put(signUpSuccess({ user, otherData: {displayName} }));
     } catch (error) {

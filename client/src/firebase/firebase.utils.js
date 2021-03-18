@@ -22,12 +22,14 @@ export const createUserProfileDocument = async (userAuth, otherData) => {
 
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
+    const cartRef = await firestore.collection('carts').add({});
+    console.log(cartRef);
     try {
       await userDoc.set({
         displayName,
         email,
         createdAt,
+        cartId: cartRef.id,
         ...otherData
       })
     } catch (error) {
@@ -75,6 +77,12 @@ export const getCurrentUser = ()=>{
     }, reject)
   })
 }
+
+export const getUserDoc = async (userId)=>{
+  const userDoc = await firestore.collection('users').doc(userId).get();
+  return userDoc;
+}
+
 
 firebase.initializeApp(config);
 

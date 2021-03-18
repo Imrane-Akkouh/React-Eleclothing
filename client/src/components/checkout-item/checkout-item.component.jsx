@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {removeItem, addItem, decreaseItemQuantity} from '../../redux/cart/cart.actions';
+import {removeItemStart, addItemStart, decreaseItemQuantityStart} from '../../redux/cart/cart.actions';
 
 import './checkout-item.style.scss';
 
@@ -22,9 +22,9 @@ const CheckoutItem = ({item, removeItem, addItem, decreaseItemQuantity})=>(
 )
 
 const mapDispatchToProps = dispatch => ({
-    removeItem: cartItem=> dispatch(removeItem(cartItem)),
-    addItem: cartItem=> dispatch(addItem(cartItem)),
-    decreaseItemQuantity: cartItem=> dispatch(decreaseItemQuantity(cartItem))
+    removeItem: cartItem=> dispatch(removeItemStart(cartItem)),
+    addItem: cartItem=> dispatch(addItemStart(cartItem)),
+    decreaseItemQuantity: cartItem=> dispatch(decreaseItemQuantityStart(cartItem))
 })
 
 export default connect(null, mapDispatchToProps)(CheckoutItem);
