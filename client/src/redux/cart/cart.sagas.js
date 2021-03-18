@@ -63,8 +63,10 @@ export function* decreaseItemQuantityStartHandler(action) {
 export function* clearBackendCartHandler() {
     try {
         const userAuth = yield getCurrentUser();
-        const userDoc = yield getUserDoc(userAuth.uid);
-        yield firestore.collection('carts').doc(userDoc.data().cartId).set({});
+        if(userAuth){
+            const userDoc = yield getUserDoc(userAuth.uid);
+            yield firestore.collection('carts').doc(userDoc.data().cartId).set({});    
+        }
         yield put(clearCart());
     } catch (error) {
         yield console.log(error + "\nfailed to reset cart");
